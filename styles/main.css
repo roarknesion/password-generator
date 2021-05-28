@@ -1,0 +1,47 @@
+* {
+  scrollbar-color: rgb(165, 180, 252) transparent;
+}
+
+::-webkit-scrollbar {
+  @apply w-4 h-4;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 bg-opacity-80 bg-clip-content rounded-lg border-4 border-solid border-transparent;
+}
+
+::-webkit-scrollbar-corner {
+  @apply bg-transparent;
+}
+
+::selection {
+  @apply bg-gray-500 bg-opacity-20;
+}
+
+:focus:not(body):not(input[type='range']) {
+  @apply ring-4 ring-gray-500 ring-opacity-30 outline-none transition-shadow;
+}
+
+html {
+  @apply h-full overflow-y-scroll;
+}
+
+body {
+  @apply container flex flex-col w-full h-full px-4 m-auto cursor-default text-sm;
+}
+
+button:focus {
+  @apply outline-none;
+}
+
+input:focus {
+  @apply outline-none;
+}
+
+input[readonly] {
+  @apply cursor-default;
+}

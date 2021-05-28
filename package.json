@@ -1,0 +1,19 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "preview": "svelte-kit preview"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-netlify": "^1.0.0-next.14",
+    "@sveltejs/kit": "next",
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.14",
+    "svelte": "^3.38.2",
+    "svelte-preprocess": "^4.7.1",
+    "tabler-icons-svelte": "^1.7.0",
+    "tailwindcss": "^2.1.2",
+    "typescript": "^4.2.4"
+  }
+}
