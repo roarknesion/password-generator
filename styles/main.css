@@ -11,7 +11,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 bg-opacity-80 bg-clip-content rounded-lg border-4 border-solid border-transparent;
+  @apply bg-gray-900 bg-clip-content border-4 border-solid border-transparent;
 }
 
 ::-webkit-scrollbar-corner {
@@ -22,8 +22,8 @@
   @apply bg-gray-500 bg-opacity-20;
 }
 
-:focus:not(body):not(input[type='range']) {
-  @apply ring-4 ring-gray-500 ring-opacity-30 outline-none transition-shadow;
+:focus:not(body):not(input[type='range']):not(.focus-none) {
+  @apply ring-4 ring-gray-500 ring-opacity-30 outline-none transition-shadow z-10;
 }
 
 html {
@@ -31,11 +31,20 @@ html {
 }
 
 body {
-  @apply container flex flex-col w-full h-full px-4 m-auto cursor-default text-sm;
+  @apply container flex flex-col w-full h-full px-4 m-auto cursor-default text-sm font-light tracking-wide;
+}
+
+button {
+  letter-spacing: inherit;
 }
 
 button:focus {
   @apply outline-none;
+}
+
+input {
+  font-weight: inherit;
+  letter-spacing: inherit;
 }
 
 input:focus {

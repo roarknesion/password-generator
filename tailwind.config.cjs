@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   mode: 'jit',
 
@@ -7,6 +9,17 @@ module.exports = {
     screens: {
       'sm': '640px',
       'md': '768px'
+    },
+
+    fontFamily: { sans: ['inter', 'sans-serif'] },
+
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: colors.black,
+      white: colors.white,
+
+      gray: colors.blueGray
     }
   }
 }

@@ -28,7 +28,7 @@
     on:click={dec}
     disabled={value <= min}
     class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-center {value <= min
-      ? 'opacity-50 cursor-default'
+      ? 'opacity-25 cursor-default'
       : ''}"
   >
     <Icon name="minus" />
@@ -36,7 +36,7 @@
 
   <div class="relative w-full">
     <div
-      class="absolute flex items-center justify-center text-center font-bold p-1 top-0 transform -translate-y-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-70 transition-opacity select-none"
+      class="absolute flex items-center justify-center text-center p-1 top-0 transform -translate-y-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity select-none"
       style="left: var(--left)"
     >
       {value}
@@ -57,7 +57,7 @@
     on:click={inc}
     disabled={value >= max}
     class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-center {value >= max
-      ? 'opacity-50 cursor-default'
+      ? 'opacity-25 cursor-default'
       : ''}"
   >
     <Icon name="plus" />

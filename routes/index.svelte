@@ -1,51 +1,110 @@
 <script lang="ts">
-  import password from '~/plugins/password'
   import Icon from '~/components/icon.svelte'
   import Range from '~/components/range.svelte'
   import Check from '~/components/check.svelte'
 
-  const { options, characters } = password.configs
-
-  let value = password.generate()
+  import password from '~/plugins/password'
 
   const refresh = () => (value = password.generate())
 
   const copy = () => navigator.clipboard.writeText(value).catch()
 
-  const checkboxes: {
-    key: Exclude<keyof typeof options, 'length'>
-    text: string
-    info: string
-  }[] = [
+  let value = password.generate()
+
+  const check = () => {
+    if (
+      !password.option.include.digit &&
+      !password.option.include.letter &&
+      !password.option.include.symbol &&
+      (!password.include.custom || !password.option.include.custom)
+    ) {
+      if (password.include.custom) {
+      }
+
+      password.option.include.digit = true
+    }
+  }
+
+  const options: { text: string; info: string; bind: boolean }[] = [
     {
-      key: 'digits',
-      text: 'Number',
-      info: characters.digits
+      text: 'To Capital',
+      info: 'Include uppercase versions of existing characters',
+      get bind() {
+        return password.option.other.uppercase
+      },
+      set bind(value: boolean) {
+        password.option.other.uppercase = value
+      }
     },
+
     {
-      key: 'lowers',
-      text: 'Lowercase',
-      info: characters.letters
+      text: 'Include Digits',
+      info: password.include.digit,
+      get bind() {
+        return password.option.include.digit
+      },
+      set bind(value: boolean) {
+        password.option.include.digit = value
+        check()
+      }
     },
+
     {
-      key: 'uppers',
-      text: 'Uppercase',
-      info: characters.letters.toUpperCase()
+      text: 'Include Letters',
+      info: password.include.letter,
+      get bind() {
+        return password.option.include.letter
+      },
+      set bind(value: boolean) {
+        password.option.include.letter = value
+        check()
+      }
     },
+
     {
-      key: 'symbols',
-      text: 'Sybol',
-      info: characters.symbols
+      text: 'Include Symbols',
+      info: password.include.symbol,
+      get bind() {
+        return password.option.include.symbol
+      },
+      set bind(value: boolean) {
+        password.option.include.symbol = value
+        check()
+      }
     },
+
     {
-      key: 'exclude',
-      text: 'Exclude',
-      info: characters.exclude
+      text: 'Include Custom Chars',
+      info: password.include.custom,
+      get bind() {
+        return password.option.include.custom
+      },
+      set bind(value: boolean) {
+        password.option.include.custom = value
+        check()
+      }
     },
+
     {
-      key: 'duplicate',
-      text: 'Dublicate',
-      info: 'Lorem Ipsum'
+      text: 'Exclude Similar Chars',
+      info: password.exclude.similar,
+      get bind() {
+        return password.option.exclude.similar
+      },
+      set bind(value: boolean) {
+        password.option.exclude.similar = value
+      }
+    },
+
+    {
+      text: 'Exclude Custom Chars',
+      info: password.exclude.custom,
+      get bind() {
+        return password.option.exclude.custom
+      },
+      set bind(value: boolean) {
+        password.option.exclude.custom = value
+      }
     }
   ]
 </script>
@@ -76,15 +135,17 @@
   </button>
 </section>
 
-<Range bind:value={options.length} input={refresh} min={2} max={80} />
+<Range bind:value={password.length} input={refresh} min={1} max={80} />
 
-<div class="flex flex-wrap gap-4 items-center justify-center mt-16">
-  {#each checkboxes as checkboxe}
-    <Check
-      bind:checked={options[checkboxe.key]}
-      change={refresh}
-      text={checkboxe.text}
-      info={checkboxe.info}
-    />
+<div class="flex flex-col gap-4 items-center justify-center mt-12 max-w-xs mx-auto w-full">
+  {#each options as option}
+    {#if option.info}
+      <Check
+        bind:checked={option.bind}
+        change={refresh}
+        text={option.text}
+        info={option.info}
+      />
+    {/if}
   {/each}
 </div>
