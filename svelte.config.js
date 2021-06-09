@@ -10,7 +10,7 @@ const config = {
     adapter: adapter(),
 
     files: {
-      routes: 'routes',
+      routes: 'route',
       template: 'app.html'
     },
 

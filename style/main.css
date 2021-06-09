@@ -1,5 +1,5 @@
 * {
-  scrollbar-color: rgb(165, 180, 252) transparent;
+  scrollbar-color: rgb(15, 23, 42) transparent;
 }
 
 ::-webkit-scrollbar {
@@ -19,11 +19,11 @@
 }
 
 ::selection {
-  @apply bg-gray-500 bg-opacity-20;
+  @apply bg-gray-300 bg-opacity-50;
 }
 
 :focus:not(body):not(input[type='range']):not(.focus-none) {
-  @apply ring-4 ring-gray-500 ring-opacity-30 outline-none transition-shadow z-10;
+  @apply ring-4 ring-gray-300 ring-opacity-70 outline-none transition-shadow z-10;
 }
 
 html {

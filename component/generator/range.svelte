@@ -1,20 +1,16 @@
 <script lang="ts">
-  import Icon from '~/components/icon.svelte'
+  import Icon from '~/component/icon.svelte'
 
   export let value = 0
-  export let input = () => {}
-
   export let min = 2
   export let max = 80
 
   const inc = () => {
     value += 1
-    input()
   }
 
   const dec = () => {
     value -= 1
-    input()
   }
 
   $: percent = ((value - min) * 100) / (max - min)
@@ -46,7 +42,6 @@
       class="range"
       type="range"
       bind:value
-      on:input={input}
       {min}
       {max}
       on:mousedown={() => window.getSelection()?.empty()}
@@ -60,7 +55,7 @@
       ? 'opacity-25 cursor-default'
       : ''}"
   >
-    <Icon name="plus" />
+    <Icon name="add" />
   </button>
 </section>
 

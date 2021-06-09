@@ -1,38 +1,11 @@
-const Password = class {
-  length = 16
+import generator from '~/data/generator'
 
-  readonly include = {
-    digit: '0123456789',
-    letter: 'abcdefghijklmnopqrstuvwxyz',
-    symbol: '@!?&%$#(){}[]<>+-*/=.,:;',
-    custom: ''
-  }
-
-  readonly exclude = {
-    similar: 'ilo0',
-    custom: '(){}[]<>+-*/=.,:;'
-  }
-
-  readonly option = {
-    include: {
-      digit: true,
-      letter: true,
-      symbol: true,
-      custom: true
-    },
-
-    exclude: {
-      similar: true,
-      custom: true
-    },
-
-    other: {
-      uppercase: true
-    }
-  }
+const Generator = class {
+  state = generator
 
   readonly generate = () => {
-    const { length, fill } = this
+    const { fill } = this
+    const length = this.state.length.value
 
     const pool = fill()
 
@@ -46,35 +19,35 @@ const Password = class {
   }
 
   private fill = () => {
-    const { option, include, exclude } = this
+    const { option, character } = this.state
 
     let result = ''
 
     if (option.include.digit) {
-      result += include.digit
+      result += character.include.digit
     }
 
     if (option.include.letter) {
-      result += include.letter
+      result += character.include.letter
     }
 
     if (option.include.symbol) {
-      result += include.symbol
+      result += character.include.symbol
     }
 
     if (option.include.custom) {
-      result += include.custom
+      result += character.include.custom
     }
 
     if (option.exclude.similar) {
-      result = helper.exclude(result, exclude.similar)
+      result = helper.exclude(result, character.exclude.similar)
     }
 
     if (option.exclude.custom) {
-      result = helper.exclude(result, exclude.custom)
+      result = helper.exclude(result, character.exclude.custom)
     }
 
-    if (option.other.uppercase) {
+    if (option.uppercase) {
       result = helper.uppercase(result)
     }
 
@@ -105,4 +78,4 @@ const helper = {
   uppercase: (string: string) => helper.unique(string + string.toUpperCase())
 }
 
-export default new Password()
+export default new Generator()

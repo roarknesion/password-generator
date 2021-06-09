@@ -6,13 +6,13 @@
     "preview": "svelte-kit preview"
   },
   "devDependencies": {
-    "@sveltejs/adapter-netlify": "^1.0.0-next.14",
-    "@sveltejs/kit": "next",
-    "autoprefixer": "^10.2.5",
-    "postcss": "^8.2.14",
+    "@sveltejs/adapter-netlify": "^1.0.0-next.17",
+    "@sveltejs/kit": "^1.0.0-next.113",
+    "autoprefixer": "^10.2.6",
+    "postcss": "^8.3.0",
     "svelte": "^3.38.2",
-    "svelte-preprocess": "^4.7.1",
-    "tailwindcss": "^2.1.2",
-    "typescript": "^4.2.4"
+    "svelte-preprocess": "^4.7.3",
+    "tailwindcss": "^2.1.4",
+    "typescript": "^4.3.2"
   }
 }
