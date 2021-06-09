@@ -17,7 +17,7 @@
 </script>
 
 <section
-  class="relative flex items-center gap-4 mt-8 group h-10"
+  class="relative flex items-center gap-4 mt-12 group h-10"
   style="--left: calc({percent}% - {(percent / 100) * 16}px + 8px);"
 >
   <button
@@ -65,7 +65,7 @@
   }
 
   .range::-webkit-slider-runnable-track {
-    background-image: linear-gradient(to right, #000 var(--left), #00000020 0);
+    background-image: linear-gradient(to right, #0f172a var(--left), #0f172a30 0);
 
     @apply w-full h-px;
   }

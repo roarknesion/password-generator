@@ -3,22 +3,22 @@
   import GeneratorRange from '~/component/generator/range.svelte'
   import GeneratorOption from '~/component/generator/option.svelte'
 
-  import pluginGenerator from '~/plugin/generator'
-
   import generator from '~/store/generator'
   import history from '~/store/history'
+
+  import pgenerator from '~/plugin/generator'
 
   let time: NodeJS.Timeout
   let password: string
 
-  pluginGenerator.state = $generator
+  pgenerator.state = $generator
 
   generator.subscribe(() => {
-    password = pluginGenerator.generate()
+    password = pgenerator.generate()
 
     clearTimeout(time)
 
-    time = setTimeout(() => ($history = [password, ...$history]), 250)
+    time = setTimeout(() => ($history.list = [password, ...$history.list]), 250)
   })
 </script>
 
@@ -75,4 +75,11 @@
     info={$generator.character.exclude.custom}
     bind:checked={$generator.option.exclude.custom}
   />
+
+  <button
+    class="flex items-center justify-center p-2 gap-2 hover:bg-opacity-30 hover:bg-gray-300"
+    on:click={() => generator.reset.option()}
+  >
+    Reset All Options
+  </button>
 </section>

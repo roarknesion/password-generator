@@ -7,10 +7,10 @@
   export let refresh = () => {}
 </script>
 
-<section class="flex items-center border border-gray-900">
+<section class="flex items-center border border-gray-300">
   <button
     on:click={refresh}
-    class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-center"
+    class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-center text-gray-500 hover:text-gray-900"
   >
     <Icon name="refresh" />
   </button>
@@ -25,7 +25,7 @@
 
   <button
     on:click={() => clipboard.write(value)}
-    class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-center"
+    class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-center text-gray-500 hover:text-gray-900"
   >
     <Icon name="clipboard" />
   </button>
