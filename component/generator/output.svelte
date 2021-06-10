@@ -7,26 +7,23 @@
   export let refresh = () => {}
 </script>
 
-<section class="flex items-center border border-gray-300">
-  <button
-    on:click={refresh}
-    class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-center text-gray-500 hover:text-gray-900"
-  >
+<div class="form-control relative">
+  <button class="absolute left-0 top-0 btn btn-ghost btn-square" on:click={refresh}>
     <Icon name="refresh" />
   </button>
 
   <input
-    class="h-10 w-full text-center"
     {value}
     readonly
+    class="w-full pr-16 pl-16 input input-primary input-bordered text-center"
     on:mousedown={selection.mousedown}
     on:click={({ detail, currentTarget }) => selection.click(detail, currentTarget)}
   />
 
   <button
+    class="absolute right-0 top-0 btn btn-ghost btn-square"
     on:click={() => clipboard.write(value)}
-    class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-center text-gray-500 hover:text-gray-900"
   >
     <Icon name="clipboard" />
   </button>
-</section>
+</div>

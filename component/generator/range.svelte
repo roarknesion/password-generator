@@ -5,14 +5,6 @@
   export let min = 2
   export let max = 80
 
-  const inc = () => {
-    value += 1
-  }
-
-  const dec = () => {
-    value -= 1
-  }
-
   $: percent = ((value - min) * 100) / (max - min)
 </script>
 
@@ -21,11 +13,9 @@
   style="--left: calc({percent}% - {(percent / 100) * 16}px + 8px);"
 >
   <button
-    on:click={dec}
+    on:click={() => (value -= 1)}
     disabled={value <= min}
-    class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-center {value <= min
-      ? 'opacity-25 cursor-default'
-      : ''}"
+    class="btn btn-ghost btn-square"
   >
     <Icon name="minus" />
   </button>
@@ -49,11 +39,9 @@
   </div>
 
   <button
-    on:click={inc}
+    on:click={() => (value += 1)}
     disabled={value >= max}
-    class="w-10 h-10 flex-shrink-0 flex items-center justify-center text-center {value >= max
-      ? 'opacity-25 cursor-default'
-      : ''}"
+    class="btn btn-ghost btn-square"
   >
     <Icon name="add" />
   </button>
@@ -65,28 +53,36 @@
   }
 
   .range::-webkit-slider-runnable-track {
-    background-image: linear-gradient(to right, #0f172a var(--left), #0f172a30 0);
+    background-image: linear-gradient(
+      to right,
+      hsl(var(--bc)) var(--left),
+      hsla(var(--bc) / 0.5) 0
+    );
 
     @apply w-full h-px;
   }
 
   .range::-webkit-slider-thumb {
-    @apply appearance-none w-4 h-4 bg-gray-900 -mt-2;
+    @apply appearance-none w-4 h-4 bg-base-content -mt-2;
   }
 
   .range::-moz-range-track {
-    @apply w-full h-px bg-gray-900 bg-opacity-20;
+    @apply w-full h-px bg-base-content bg-opacity-50;
   }
 
   .range::-moz-range-progress {
-    @apply h-px bg-gray-900;
+    @apply h-px bg-base-content;
   }
 
   .range::-moz-range-thumb {
-    @apply appearance-none w-4 h-4 bg-gray-900 border-none rounded-none transform;
+    @apply appearance-none w-4 h-4 bg-base-content border-none rounded-none transform;
   }
 
   .range:focus::-webkit-slider-thumb {
-    @apply ring-4 ring-gray-500 ring-opacity-30 outline-none transition-shadow;
+    @apply ring-1 ring-offset-2 ring-offset-base-100 ring-base-content;
+  }
+
+  .range:focus::-moz-range-thumb {
+    @apply ring-1 ring-offset-2 ring-offset-base-100 ring-base-content;
   }
 </style>

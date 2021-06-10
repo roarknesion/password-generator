@@ -1,5 +1,5 @@
 * {
-  scrollbar-color: rgb(15, 23, 42) transparent;
+  scrollbar-color: hsl(var(--bc)) transparent;
 }
 
 ::-webkit-scrollbar {
@@ -11,7 +11,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-900 bg-clip-content border-4 border-solid border-transparent;
+  @apply bg-base-content bg-clip-content border-4 border-solid border-transparent;
 }
 
 ::-webkit-scrollbar-corner {
@@ -19,11 +19,7 @@
 }
 
 ::selection {
-  @apply bg-gray-300 bg-opacity-50;
-}
-
-:focus:not(body):not(input[type='range']):not(.focus-none) {
-  @apply ring-4 ring-gray-300 ring-opacity-70 outline-none transition-shadow z-10;
+  @apply bg-base-content bg-opacity-30;
 }
 
 html {
@@ -31,26 +27,51 @@ html {
 }
 
 body {
-  @apply container flex flex-col w-full h-full px-4 m-auto cursor-default text-sm font-light tracking-wide;
+  @apply container flex flex-col w-full h-full px-4 m-auto bg-base-100 text-base-content text-sm tracking-widest;
 }
 
-button {
-  letter-spacing: inherit;
-}
-
-button:focus {
-  @apply outline-none;
-}
-
-input {
-  font-weight: inherit;
-  letter-spacing: inherit;
-}
-
-input:focus {
+body:focus-visible {
   @apply outline-none;
 }
 
 input[readonly] {
   @apply cursor-default;
+}
+
+input[type='range']:focus {
+  @apply outline-none;
+}
+
+.input-primary:focus {
+  @apply ring-1 ring-offset-2 ring-offset-base-100 ring-base-content;
+}
+
+.menu li > a:hover {
+  --tw-bg-opacity: 0.2;
+}
+
+.menu li > a:active {
+  --tw-bg-opacity: 1;
+}
+
+.menu.horizontal li > a,
+.menu.horizontal li > span {
+  border-bottom-width: 1px;
+  border-bottom-color: transparent;
+}
+
+.menu.horizontal li.bordered > a,
+.menu.horizontal li.bordered > span {
+  border-bottom-width: 1px;
+}
+
+.btn-ghost:focus-visible {
+  @apply ring-1 ring-base-content outline-none;
+}
+
+.btn,
+.input {
+  letter-spacing: inherit;
+  font: inherit;
+  font-weight: inherit;
 }

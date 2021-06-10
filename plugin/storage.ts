@@ -1,4 +1,4 @@
-type Name = 'generator' | 'history'
+type Name = 'generator' | 'history' | 'global'
 
 const local = {
   set: (key: string, value: any) => localStorage.setItem(key, value),

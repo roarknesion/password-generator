@@ -47,6 +47,9 @@ store.subscribe($store => {
   if ($store.length.min < 1) $store.length.min = 1
   if ($store.length.min >= $store.length.max) $store.length.max = $store.length.min + 1
 
+  $store.character.include.custom = $store.character.include.custom.replace(/ /g, '')
+  $store.character.exclude.custom = $store.character.exclude.custom.replace(/ /g, '')
+
   storage.set('generator', $store)
 })
 

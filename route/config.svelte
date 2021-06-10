@@ -1,36 +1,29 @@
 <script lang="ts">
+  import FormItem from '~/component/history/form-item.svelte'
+
   import generator from '~/store/generator'
   import history from '~/store/history'
 </script>
 
 <section class="flex flex-col gap-4">
-  <label class="flex flex-col">
-    <span>Include Custom Characters</span>
-    <input class="border p-2" type="text" bind:value={$generator.character.include.custom} />
-  </label>
+  <FormItem
+    bind:value={$generator.character.include.custom}
+    label="include custom characters"
+  />
 
-  <label class="flex flex-col">
-    <span>Exclude Custom Characters</span>
-    <input class="border p-2" type="text" bind:value={$generator.character.exclude.custom} />
-  </label>
+  <FormItem
+    bind:value={$generator.character.exclude.custom}
+    label="exclude custom characters "
+  />
 
-  <label class="flex flex-col">
-    <span>Length Max Value</span>
-    <input class="border p-2" type="number" bind:value={$generator.length.max} />
-  </label>
+  <FormItem bind:value={$generator.length.max} label="length max value" />
 
-  <label class="flex flex-col">
-    <span>Length Min Value</span>
-    <input class="border p-2" type="number" bind:value={$generator.length.min} />
-  </label>
+  <FormItem bind:value={$generator.length.min} label="length min value" />
 
-  <label class="flex flex-col">
-    <span>History Limit</span>
-    <input class="border p-2" type="number" bind:value={$history.limit} />
-  </label>
+  <FormItem bind:value={$history.limit} label="history limit" />
 
   <button
-    class="flex items-center justify-center p-2 gap-2 hover:bg-opacity-30 hover:bg-gray-300"
+    class="btn btn-ghost"
     on:click={() => {
       generator.reset.config()
       history.reset()

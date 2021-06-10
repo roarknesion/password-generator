@@ -1,8 +1,9 @@
 <script lang="ts">
+  import type { Name, Size } from '~/type/icon'
   import icon from '~/data/icon'
 
-  export let name: keyof typeof icon
-  export let size = '15px'
+  export let name: Name
+  export let size: Size = '15px'
 </script>
 
 <svg
